@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio CV</title>
+
+    <!-- Favicon -->
+    <link rel="icon" href="favicon.png" type="image/png">
+    
+    <style>
+        /* Reset basic */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: #f4f7f9;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        header {
+            padding: 2rem;
+            text-align: center;
+            background: linear-gradient(90deg, #4e54c8, #8f94fb);
+            color: white;
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        main {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem;
+        }
+
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            width: 100%;
+            max-width: 1000px;
+        }
+
+        .menu-card {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+        }
+
+        .menu-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 25px rgba(0,0,0,0.2);
+        }
+
+        .menu-card h2 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: #4e54c8;
+        }
+
+        .menu-card p {
+            font-size: 1rem;
+            color: #666;
+        }
+
+        footer {
+            text-align: center;
+            padding: 1rem;
+            background-color: #f0f2f5;
+            font-size: 0.9rem;
+            color: #777;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Dedy Martin Hutagalung</h1>
+        <p>Pilih halaman CV yang ingin Anda lihat</p>
+    </header>
+
+    <main>
+        <div class="menu-grid">
+            <a href="cv-admin.html" class="menu-card">
+                <h2>CV Admin</h2>
+                <p>Keahlian administrasi dan koordinasi operasional</p>
+            </a>
+            <a href="cv-it.html" class="menu-card">
+                <h2>CV IT WEB</h2>
+                <p>Pengembangan dan desain website modern</p>
+            </a>
+            <a href="cv-staff-it.html" class="menu-card">
+                <h2>CV Staff IT</h2>
+                <p>Dukungan teknis dan troubleshooting sistem</p>
+            </a>
+            <a href="cv-autocad.html" class="menu-card">
+                <h2>CV CAD</h2>
+                <p>Desain teknis dan blueprint berbasis CAD</p>
+            </a>
+            <a href="cv-umum.html" class="menu-card">
+                <h2>CV Umum</h2>
+                <p>CV lengkap untuk berbagai bidang pekerjaan</p>
+            </a>
+        </div>
+    </main>
+
+    <footer>
+        &copy; 2026 Dedy Martin Hutagalung. All rights reserved.
+    </footer>
+</body>
+</html>

@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portfolio - Dedy Martin Hutagalung</title>
+    <!-- Favicon -->
+    <link rel="icon" href="favicon.png" type="image/png">
+    
+
+<style>
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    background: #0f172a;
+    color: white;
+}
+
+.container {
+    max-width: 900px;
+    margin: auto;
+    padding: 20px;
+}
+
+/* CARD */
+.card {
+    background: #1e293b;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 12px;
+}
+
+/* TITLE */
+h1 { margin-bottom: 5px; }
+h2 {
+    border-bottom: 1px solid #334155;
+    padding-bottom: 5px;
+}
+
+/* GRID PROJECT */
+.projects {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
+/* PROJECT CARD */
+.project {
+    background: #020617;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.project img {
+    width: 100%;
+    border-radius: 8px;
+}
+
+/* TAG */
+.tag {
+    display: inline-block;
+    background: #22c55e;
+    padding: 3px 8px;
+    border-radius: 5px;
+    font-size: 12px;
+    margin-top: 5px;
+}
+
+/* LIST */
+ul { padding-left: 20px; }
+
+/* RESPONSIVE */
+@media (max-width: 600px) {
+    .projects {
+        grid-template-columns: 1fr;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<!-- PROFILE -->
+<div class="card">
+    <h1>Dedy Martin Hutagalung</h1>
+    <p>Admin | IT Support | CAD Designer</p>
+    <p>
+        Lulusan S1 Sistem Informasi dengan pengalaman di bidang administrasi,
+        IT support, serta operator mesin laser dan desain CAD.
+        Terbiasa bekerja teliti, terorganisir, dan adaptif.
+    </p>
+</div>
+
+<!-- PROJECT -->
+<div class="card">
+    <h2>Project</h2>
+
+<div class="projects">
+
+    <!-- PROJECT 1 -->
+    <div class="project">
+        <img src="project-admin.png" alt="Admin Project">
+        <p><b>Pengelolaan Data Administrasi</b></p>
+        <p>Mengelola data dan dokumen menggunakan Microsoft Excel dan Word secara terstruktur dan rapi.</p>
+        <span class="tag">Excel</span>
+        <span class="tag">Admin</span>
+    </div>
+
+    <!-- PROJECT 2 -->
+    <div class="project">
+        <img src="project-cad.png" alt="CAD Project">
+        <p><b>Desain CAD & Operasi Mesin Laser</b></p>
+        <p>Membuat desain teknis menggunakan AutoCAD dan mengoperasikan mesin laser untuk produksi.</p>
+        <span class="tag">AutoCAD</span>
+        <span class="tag">Teknik</span>
+    </div>
+
+    <!-- PROJECT 3 -->
+    <div class="project">
+        <img src="project-it.png" alt="IT Support Project">
+        <p><b>IT Support & Troubleshooting</b></p>
+        <p>Melakukan instalasi software, perbaikan komputer, dan maintenance sistem operasional.</p>
+        <span class="tag">IT Support</span>
+        <span class="tag">Troubleshooting</span>
+    </div>
+
+    <!-- PROJECT 4 -->
+    <div class="project">
+        <img src="project-web.png" alt="Web Project">
+        <p><b>Website Sederhana (HTML & CSS)</b></p>
+        <p>Membuat halaman web sederhana seperti landing page dan halaman event.</p>
+        <span class="tag">HTML</span>
+        <span class="tag">CSS</span>
+    </div>
+
+</div>
+</div>
+
+<!-- PENGALAMAN -->
+<div class="card">
+    <h2>Pengalaman</h2>
+    <ul>
+        <li>Admin – Pengolahan data & dokumen</li>
+        <li>Staff Perkantoran – Operasional administrasi</li>
+        <li>Operator Mesin Laser & Desainer CAD</li>
+    </ul>
+</div>
+
+<!-- SKILL -->
+<div class="card">
+    <h2>Skill</h2>
+    <ul>
+        <li>HTML, CSS, JavaScript (basic)</li>
+        <li>Microsoft Office</li>
+        <li>Data Entry</li>
+        <li>Troubleshooting</li>
+        <li>AutoCAD</li>
+    </ul>
+</div>
+
+<!-- PENDIDIKAN -->
+<div class="card">
+    <h2>Pendidikan</h2>
+    <p>S1 Sistem Informasi - Universitas Putera Batam (2018)</p>
+</div>
+
+<!-- KONTAK -->
+<div class="card">
+    <h2>Kontak</h2>
+    <p>Email: dedymartin12@gmail.com</p>
+    <p>HP: <a href="https://wa.me/6282162152833" target="_blank">
+            0821 6215 2833
+        </a> / 0856 6804 6961</p>
+    <p>LinkedIn:
+        <a href="https://linkedin.com/in/username" target="_blank">
+            linkedin.com/in/username
+        </a></p>
+</div>
+
+</div>
+
+</body>
+</html>
