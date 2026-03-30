@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dedy EM - CV Interaktif Final</title>
+<link rel="icon" href="favicon.png" type="image/png">
+
+<style>
+body { font-family: Arial, sans-serif; margin:0; background:#f4f4f4; line-height:1.4; }
+.container { max-width:800px; margin:20px auto; background:white; padding:25px; border-radius:8px; box-shadow:0 2px 8px rgba(0,0,0,0.1); }
+h1 { font-size:28px; color:#1a73e8; margin-bottom:5px; }
+h2 { font-size:20px; color:#1a73e8; border-bottom:1px solid #ddd; margin-top:20px; margin-bottom:10px; }
+p, li { font-size:14px; margin-bottom:5px; }
+ul { padding-left:20px; margin-bottom:10px; }
+.topbar { text-align:right; margin-bottom:10px; }
+
+button {
+padding:6px 12px;
+background:#1a73e8;
+color:white;
+border:none;
+cursor:pointer;
+border-radius:4px;
+font-size:14px;
+margin-left:5px;
+}
+
+a { color:#1a73e8; text-decoration:none; }
+
+[contenteditable]:focus {
+outline: 2px solid #1a73e8;
+background:#e8f0fe;
+}
+
+.section-controls { margin-top:5px; text-align:right; }
+li button { background:red; font-size:12px; padding:0 4px; }
+.add-bullet-btn { margin-top:5px; font-size:12px; padding:2px 6px; background:#34a853; }
+.link-btn { font-size:12px; margin-left:5px; padding:2px 6px; background:#fbbc05; color:#000; border-radius:3px; }
+.delete-section-btn { background:red; font-size:12px; padding:2px 6px; }
+
+/* SUB BULLET */
+.sub-list { margin-top:5px; margin-left:15px; }
+.sub-list li { font-size:13px; }
+
+/* PREVIEW */
+.preview-mode button,
+.preview-mode .section-controls,
+.preview-mode .add-bullet-btn,
+.preview-mode .link-btn {
+display:none !important;
+}
+
+.preview-mode #backBtn {
+display:inline-block !important;
+}
+
+.preview-mode [contenteditable] {
+outline:none !important;
+background:transparent !important;
+}
+
+#backBtn {
+display:none;
+position:fixed;
+top:10px;
+right:10px;
+z-index:999;
+}
+
+/* PRINT */
+@media print {
+button, #editorPanel, #backBtn { display:none; }
+.container { width:210mm; height:297mm; padding:15mm; margin:0 auto; }
+}
+
+/* === PDF MODE FIX === */
+.pdf-mode {
+background: #ffffff !important;
+}
+
+.pdf-mode .container {
+box-shadow: none !important;
+width: 210mm;
+min-height: 297mm;
+margin: 0 auto;
+background: #ffffff !important;
+}
+</style>
+</head>
+
+<body>
+
+<div id="editorPanel" class="topbar">
+<button onclick="downloadPDF()">Download PDF</button>
+<button onclick="resetCV()">Reset CV</button>
+<button onclick="addSection()">Tambah Section</button>
+<button onclick="previewMode()">Preview</button>
+<button onclick="exportHTML()">Export HTML</button>
+</div>
+
+<button id="backBtn" onclick="editMode()">Kembali Edit</button>
+
+<div class="container" id="cvContainer">
+
+<div class="section">
+<div class="section-controls"><button class="delete-section-btn" onclick="removeSection(this)">Hapus</button></div>
+<h1 contenteditable="true">Dedy Martin Hutagalung</h1>
+<p contenteditable="true">Junior IT Support & Admin Staff | Web Developer | AutoCAD</p>
+
+<p>
+<span contenteditable="true">📍 Sagulung, Batam, Indonesia</span><br>
+
+<span contenteditable="true">📧 dedymartin12@gmail.com</span>
+<button class="link-btn" onclick="addLink(this)">Link</button> |
+
+<span contenteditable="true">📱 +62 821 6215 2833</span>
+<button class="link-btn" onclick="addLink(this)">Link</button> |
+
+<span contenteditable="true">📱 +62 856 6804 6961</span>
+<button class="link-btn" onclick="addLink(this)">Link</button><br>
+
+<span contenteditable="true">🔗 linkedin.com/in/ </span>
+<button class="link-btn" onclick="addLink(this)">Link</button> |
+
+<span contenteditable="true">Portfolio: </span>
+<button class="link-btn" onclick="addLink(this)">Link</button>
+</p>
+</div>
+
+<div class="section">
+<div class="section-controls"><button class="delete-section-btn" onclick="removeSection(this)">Hapus</button></div>
+<h2 contenteditable="true">Professional Summary</h2>
+<p contenteditable="true">Detail-oriented Information Systems graduate with experience in IT support, web development, and AutoCAD design. Skilled in troubleshooting, system maintenance, and administrative tasks. Able to work efficiently, adapt quickly, and support daily IT and office operations in a professional environment.</p>
+</div>
+
+<div class="section">
+<div class="section-controls"><button class="delete-section-btn" onclick="removeSection(this)">Hapus</button></div>
+<h2 contenteditable="true">Key Skills</h2>
+<ul id="skills">
+<li contenteditable="true">IT Support & Troubleshooting <button onclick="removeBullet(this)">x</button></li>
+<li contenteditable="true">Microsoft Office (Excel, Word, PowerPoint) <button onclick="removeBullet(this)">x</button></li>
+<li contenteditable="true">Web Development (HTML, CSS, JavaScript) <button onclick="removeBullet(this)">x</button></li>
+<li contenteditable="true">AutoCAD 2D Design <button onclick="removeBullet(this)">x</button></li>
+<li contenteditable="true">Data Entry & Administration <button onclick="removeBullet(this)">x</button></li>
+<li contenteditable="true">Basic Networking <button onclick="removeBullet(this)">x</button></li>
+<li contenteditable="true">Hardware & Software Installation <button onclick="removeBullet(this)">x</button></li>
+</ul>
+<button class="add-bullet-btn" onclick="addBullet('skills')">+ Tambah</button>
+</div>
+
+<!-- EXPERIENCE (UPDATED ONLY HERE) -->
+<div class="section">
+<div class="section-controls"><button class="delete-section-btn" onclick="removeSection(this)">Hapus</button></div>
+<h2 contenteditable="true">Experience</h2>
+<ul id="exp">
+<li contenteditable="true">
+Freelance AutoCAD 
+<button onclick="addSubBullet(this)">Sub</button>
+<button onclick="removeBullet(this)">x</button>
+
+<ul class="sub-list">
+<li contenteditable="true">Created 2D technical drawings using AutoCAD for small-scale projects <button onclick="removeBullet(this)">x</button></li>
+<li contenteditable="true">Ensured accuracy and precision in design specifications <button onclick="removeBullet(this)">x</button></li>
+<li contenteditable="true">Completed projects on time based on client requirements <button onclick="removeBullet(this)">x</button></li>
+</ul>
+
+</li>
+
+<li contenteditable="true">
+Project Web Development
+<button onclick="addSubBullet(this)">Sub</button>
+<button onclick="removeBullet(this)">x</button>
+
+<ul class="sub-list">
+<li contenteditable="true">Developed simple responsive websites using HTML, CSS, and JavaScript <button onclick="removeBullet(this)">x</button></li>
+<li contenteditable="true">Designed user-friendly layouts and improved website usability <button onclick="removeBullet(this)">x</button></li>
+<li contenteditable="true">Tested and debugged web features to ensure functionality <button onclick="removeBullet(this)">x</button></li>
+</ul>
+
+</li>
+
+<li contenteditable="true">
+IT Support (Self / Practice / Project)
+<button onclick="addSubBullet(this)">Sub</button>
+<button onclick="removeBullet(this)">x</button>
+
+<ul class="sub-list">
+<li contenteditable="true">Installed and configured software and operating systems <button onclick="removeBullet(this)">x</button></li>
+<li contenteditable="true">Performed basic troubleshooting for hardware and software issues <button onclick="removeBullet(this)">x</button></li>
+<li contenteditable="true">Assisted in maintaining system performance and security <button onclick="removeBullet(this)">x</button></li>
+</ul>
+
+</li>
+</ul><button class="add-bullet-btn" onclick="addBullet('exp')">+ Tambah</button>
+</div>
+
+<div class="section">
+<div class="section-controls"><button class="delete-section-btn" onclick="removeSection(this)">Hapus</button></div>
+<h2 contenteditable="true">Education</h2>
+<ul id="edu">
+<li contenteditable="true">S1 Sistem Informasi – Universitas Putera Batam (2018) <button onclick="removeBullet(this)">x</button></li>
+</ul>
+<button class="add-bullet-btn" onclick="addBullet('edu')">+ Tambah</button>
+</div>
+
+<div class="section">
+<div class="section-controls"><button class="delete-section-btn" onclick="removeSection(this)">Hapus</button></div>
+<h2 contenteditable="true">Certifications</h2>
+<ul id="cert">
+<li contenteditable="true">Microsoft Excel – Coursera <button onclick="removeBullet(this)">x</button></li>
+<li contenteditable="true">WordPress Website Development – Coursera <button onclick="removeBullet(this)">x</button></li>
+</ul>
+<button class="add-bullet-btn" onclick="addBullet('cert')">+ Tambah</button>
+</div>
+
+<div class="section">
+<div class="section-controls"><button class="delete-section-btn" onclick="removeSection(this)">Hapus</button></div>
+<h2 contenteditable="true">Languages</h2>
+<ul id="lang">
+<li contenteditable="true">Indonesian – Native <button onclick="removeBullet(this)">x</button></li>
+<li contenteditable="true">English — Intermediate (Professional working proficiency) <button onclick="removeBullet(this)">x</button></li>
+</ul>
+<button class="add-bullet-btn" onclick="addBullet('lang')">+ Tambah</button>
+</div>
+
+</div>
+
+<!-- LIBRARY PDF -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+
+<script>
+const defaultCV = document.getElementById("cvContainer").innerHTML;
+
+function resetCV(){
+document.getElementById("cvContainer").innerHTML = defaultCV;
+}
+
+function downloadPDF(){
+const element = document.getElementById("cvContainer");
+
+document.body.classList.add("pdf-mode");
+
+previewMode();
+
+const opt = {
+margin: 10,
+filename: 'Dedy_EM_CV.pdf',
+image: { type: 'jpeg', quality: 1 },
+html2canvas: { 
+scale: 3,
+backgroundColor: '#ffffff'
+},
+jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
+};
+
+html2pdf().set(opt).from(element).save().then(()=>{
+editMode();
+document.body.classList.remove("pdf-mode");
+});
+}
+</script>
+
+</body>
+</html>
